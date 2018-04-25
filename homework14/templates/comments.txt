@@ -1,0 +1,27 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        Сообщения:
+            {% for category, message in messages %}
+                Категория: {{ category }}
+                Сообщение: {{ message }}
+            {% endfor %}
+        Конец сообщений
+    {% endif %}
+{% endwith %}
+
+
+Пост:
+{% for item in post %}
+    Заголовок: {{ item.title }}
+    Автор: {{ item.author }}
+    Дата: {{ item.date_created }}
+    Текст: {{ item.content }}
+{% endfor %}
+
+Комменты:
+{% for item in comments %}
+    Автор: {{ item.user }}
+    Текст: {{ item.content }}
+
+{% endfor %}
+Конец постов
