@@ -32,7 +32,7 @@ def index():
 
         print(post.content)
 
-    return render_template('home.txt', posts=posts)
+    return render_template('index.html', posts=posts)
 
 @app.route('/<id>', methods=['GET', 'POST'])
 def home(id):
@@ -49,9 +49,9 @@ def home(id):
 
             flash('Comment created!')
 
-    post = Post.query.filter_by(id=id)
+    post = Post.query.filter_by(id=id).first()
     comments = Comment.query.filter_by(post_id=id)
-    return render_template('comments.txt', post=post, comments=comments)
+    return render_template('article.html', post=post, comments=comments)
 
 if __name__ == '__main__':
     from models import *

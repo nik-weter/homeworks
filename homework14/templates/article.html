@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+
+<h1>{{ post.title }}</h1>
+<br>
+{{ post.content }}
+
+<br>
+<b>{{ post.author }}</b>        {{ post.date_created }}
+
+<br>
+<br>
+Комменты:<br>
+<br>
+{% for item in comments %}
+Автор: <b>{{ item.user }}</b><br>
+Текст: {{ item.content }}<br>
+<br>
+{% endfor %}
+
+
+<div>
+        <form method="post">
+            <fieldset>
+                <div class="panel-primary">
+                    <legend><h2>New comment</h2></legend>
+                    User:
+                    <input type="text" class="form-control" name="user">
+                    <div class="panel-title">Date: <i> {{date_crated}}</i></div>
+                    <div class="panel-title">Comment:</div>
+                    <textarea name="content" cols="40" rows="3"></textarea>
+                    <br>
+                    <br>
+                    <input type="hidden" name="post_id" value="{{post.id}}">
+                    <input type="submit" class="btn btn-lg btn-success" value="Submit">
+                </div>
+            </fieldset>
+        </form>
+</div>
+</body>
+</html>
